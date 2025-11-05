@@ -41,7 +41,7 @@ export async function POST(req: Request) {
       const data = [
         {
           event_name: "Purchase",
-          event_time: 1762371072,
+          event_time: current_timestamp,
           user_data: {
             em: ["309a0a5c3e211326ae75ca18196d301a9bdbd1a882a4d2569511033da23f0abd"],
             ph: [
@@ -78,7 +78,7 @@ const fb_response = await fetch(`https://graph.facebook.com/v24.0/${pixel_id}/ev
       "data": [
         {
           "event_name": "Purchase",
-          "event_time": 1678886400,
+          "event_time": current_timestamp,
           "action_source": "website",
           "user_data": {
             "client_user_agent": "chrome/89.0.4389.90"

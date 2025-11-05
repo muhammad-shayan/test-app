@@ -80,6 +80,7 @@ const fb_response = await fetch(`https://graph.facebook.com/v24.0/${pixel_id}/ev
           "event_name": "Purchase",
           "event_time": current_timestamp,
           "action_source": "website",
+          "event_source_url": "http://shoe-market.com/product/123",
           "user_data": {
             "client_user_agent": "chrome/89.0.4389.90"
           },

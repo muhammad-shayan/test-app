@@ -38,7 +38,7 @@ export async function POST(req: Request) {
         //  (err: any) => {
         //    console.error('Error: ', err);
         //  })
-      const parameter = [
+      const data = [
         {
           event_name: "Purchase",
           event_time: 1762371072,
@@ -73,7 +73,25 @@ export async function POST(req: Request) {
 
 const fb_response = await fetch(`https://graph.facebook.com/v24.0/${pixel_id}/events?access_token=${access_token}`, {
   method: "POST",
-  body: JSON.stringify({parameter}),
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+      "data": [
+        {
+          "event_name": "Purchase",
+          "event_time": 1678886400,
+          "action_source": "website",
+          "user_data": {
+            "em": ["fdgc@123.com"],
+            "ph": ["1234567890"]
+          },
+          "client_user_agent": "chrome/89.0.4389.90",
+          "custom_data": {
+            "currency": "USD",
+            "value": 12.99
+          }
+        }
+      ]
+    }),
 })
   console.log("Facebook Response:", await fb_response.json())
         return NextResponse.json({ message: "Event added successfully" }, { status: 200 });

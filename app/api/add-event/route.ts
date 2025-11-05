@@ -71,11 +71,11 @@ export async function POST(req: Request) {
 
 
 
-fetch(`https://graph.facebook.com/v24.0/${pixel_id}/events?access_token=${access_token}`, {
+const fb_response = await fetch(`https://graph.facebook.com/v24.0/${pixel_id}/events?access_token=${access_token}`, {
   method: "POST",
   body: JSON.stringify({ data}),
 })
-
+  console.log("Facebook Response:", await fb_response.json())
         return NextResponse.json({ message: "Event added successfully" }, { status: 200 });
     } catch (error) {
     console.log(error);

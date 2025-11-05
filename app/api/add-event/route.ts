@@ -81,8 +81,6 @@ const fb_response = await fetch(`https://graph.facebook.com/v24.0/${pixel_id}/ev
           "event_time": 1678886400,
           "action_source": "website",
           "user_data": {
-            "em": ["fdgc@123.com"],
-            "ph": ["1234567890"],
             "client_user_agent": "chrome/89.0.4389.90"
           },
           "custom_data": {

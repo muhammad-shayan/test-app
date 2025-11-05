@@ -82,9 +82,9 @@ const fb_response = await fetch(`https://graph.facebook.com/v24.0/${pixel_id}/ev
           "action_source": "website",
           "user_data": {
             "em": ["fdgc@123.com"],
-            "ph": ["1234567890"]
+            "ph": ["1234567890"],
+            "client_user_agent": "chrome/89.0.4389.90"
           },
-          "client_user_agent": "chrome/89.0.4389.90",
           "custom_data": {
             "currency": "USD",
             "value": 12.99

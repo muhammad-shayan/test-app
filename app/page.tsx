@@ -6,7 +6,7 @@ const handleAddEvent = async () => {
   const res = await fetch("/api/add-event", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ event_name: "add_to_cart", event_time: new Date().toISOString()}),
+    body: JSON.stringify({ event_name: "AddToCart", event_time: new Date().toISOString()}),
   });
 }
 
@@ -14,7 +14,7 @@ const handlePurchaseEvent = async () => {
   const res = await fetch("/api/purchase-event", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ event_name: "purchase", event_time: new Date().toISOString()}),
+    body: JSON.stringify({ event_name: "Purchase", event_time: new Date().toISOString()}),
   });
 }
 

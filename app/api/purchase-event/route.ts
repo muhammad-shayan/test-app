@@ -18,7 +18,7 @@ export async function POST(req: Request) {
         
         const data = [
           {
-            event_name: "AddToCart",
+            event_name: "Purchase",
             event_time: current_timestamp,
             action_source: "website",
             event_source_url: "https://test-app-seven-steel.vercel.app/purchase",

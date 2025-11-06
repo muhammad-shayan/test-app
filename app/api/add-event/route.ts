@@ -1,5 +1,6 @@
 import { currentUser } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server';
+import crypto from 'crypto'
 //const bizSdk = require('facebook-nodejs-business-sdk') 
 
 //const EventRequest = bizSdk.EventRequest;
@@ -13,7 +14,15 @@ const current_timestamp= new Date().toISOString();
 
 export async function POST(req: Request) {
     try {  
-        const user = await currentUser()     
+        const user = await currentUser()
+        const first_name = user?.firstName || ""
+        const last_name = user?.lastName || ""
+        const email = user?.emailAddresses[0]?.emailAddress || ""
+        const hash_first_name = crypto.createHash('sha256').update(first_name).digest('hex');
+        const hash_last_name = crypto.createHash('sha256').update(last_name).digest('hex');
+        const hash_email = crypto.createHash('sha256').update(email).digest('hex');
+        //const phone = user?.phoneNumbers[0]?.phoneNumber || ""
+        //const hash_phone = crypto.createHash('sha256').update(phone).digest('hex');     
         //const { event_name, event_time } = await req.json();
         //console.log(user?.firstName, user?.lastName,user?.emailAddresses[0]?.emailAddress);
         //console.log(event_name, event_time);
@@ -82,6 +91,9 @@ const fb_response = await fetch(`https://graph.facebook.com/v24.0/${pixel_id}/ev
           "action_source": "website",
           "event_source_url": "http://shoe-market.com/product/123",
           "user_data": {
+            "em": hash_email,
+            "fn": hash_first_name,
+            "ln": hash_last_name,
             "client_user_agent": "chrome/89.0.4389.90"
           },
           "custom_data": {
